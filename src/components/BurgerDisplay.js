@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 
 const BurgerDisplay = (props) => {
+  // const isBougie = props.displayedBurger.category === "Bougie"
   return (
     <div className="BurgerDisplay">
-      <img src={"" /* Insert burger Image URL here */}/>
+      <img src={props.displayedBurger.imgURL}/>
       <br/>
-      <h1>Insert Burger Name Here</h1>
+      <h1>{props.displayedBurger.name}</h1>
       <br/>
-      <select onChange={console.log}>
-        <option value="Relatable">Relatable</option>
-        <option value="Bougie">Bougie</option>
+      <select onChange={(e) => props.changeCategory(props.displayedBurger, e.target.value)}>
+       <option selected={props.displayedBurger.category === "Relatable"} value="Relatable">Relatable</option>
+       <option selected={props.displayedBurger.category === "Bougie"} value="Bougie">Bougie</option>
       </select>
+
     </div>
   )
 }
